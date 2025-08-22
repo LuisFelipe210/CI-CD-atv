@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import { app } from "../src/app";
-import { tarefas } from "../src/repositories.ts/tasks";%
+import { tarefas } from "../src/repositories.ts/tasks";
 
 const request = supertest(app);
 
