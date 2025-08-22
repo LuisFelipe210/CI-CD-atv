@@ -72,17 +72,4 @@ router.delete("/todo/:id", (req: Request, res: Response) => {
   }
 });
 
-router.get("/todo", (req: Request, res: Response) => {
-    try {
-        // SIMULANDO UMA CONSULTA NO BANCO DE DADOS
-        let resultado = tarefas;
-        resultado = 123; // <-- ERRO INTENCIONAL
-
-        // RESPOSTA COM OS DADOS
-        res.status(200).send(resultado);
-    } catch (error) {
-        res.status(400).send({ erro: error });
-    }
-});
-
 export { router };
