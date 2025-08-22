@@ -42,6 +42,15 @@ describe("POST /todo", () => {
       },
     ]);
   });
+
+  it("should return an error if task description is not provided", async () => {
+      const response = await request.post("/todo").send({}); // Envia um corpo vazio
+
+      expect(response.status).toBe(400);
+      expect(response.body).toEqual({
+          erro: "formato de requisição incorreto :(",
+      });
+  });
 });
 
 
@@ -67,5 +76,12 @@ describe("DELETE /todo/:id", () => {
     ]);
   });
 
+  it("should return a 404 error if task id does not exist", async () => {
+      const response = await request.delete("/todo/999"); // Usa um ID que não existe
 
+      expect(response.status).toBe(404);
+      expect(response.body).toEqual({
+          mensagem: `ID não encontrado!`,
+      });
+  });
 });
